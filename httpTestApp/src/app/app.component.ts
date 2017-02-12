@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { UsersPage } from '../pages/users/users';
+import { HomePage } from '../pages/home/home';
+//import { UsersPage } from '../pages/users/users';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = UsersPage;
+  rootPage = HomePage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
