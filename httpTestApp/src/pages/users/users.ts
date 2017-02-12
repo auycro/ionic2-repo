@@ -19,9 +19,10 @@ export class UsersPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private githubUsers: GithubUsers) {
     githubUsers.load().subscribe(users => {
-      users.forEach(user=>{
-        console.log(user.login);
-      });
+      //users.forEach(user=>{
+      //  console.log(user.login);
+      //});
+      this.users = users;
     })
   }
 
