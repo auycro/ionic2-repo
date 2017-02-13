@@ -7,6 +7,7 @@ import { UsersPage } from '../pages/users/users';
 //import { HomePage } from '../pages/home/home';
 //import { TabsPage } from '../pages/tabs/tabs';
 import { GithubUsers } from '../providers/github-users';
+import { UserDetailsPage } from '../pages/user-details/user-details';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { GithubUsers } from '../providers/github-users';
 //    ContactPage,
 //    HomePage,
 //    TabsPage
+    UserDetailsPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -28,6 +30,7 @@ import { GithubUsers } from '../providers/github-users';
 //    ContactPage,
 //    HomePage,
 //    TabsPage
+    UserDetailsPage,
   ],
   providers: [
     GithubUsers,

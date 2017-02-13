@@ -5,19 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>
       Users
     </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let user of users">
+    <button ion-item *ngFor="let user of users" (click)="goToDetails(user.login)">
       <ion-avatar item-left>
         <img [src]="user.avatar_url">
       </ion-avatar>
