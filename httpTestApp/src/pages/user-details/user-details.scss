@@ -2,10 +2,12 @@ page-user-details {
   .item-profile {
     height: 150px;
     .item-avatar {
-      width:100% !important;
+      width: 100% !important;
       height : 100% !important;
       max-width: 100px !important;  //any size
       max-height: 100px !important; //any size
+      margin: auto;
+      //align-items: center;
     }
   }
 }
