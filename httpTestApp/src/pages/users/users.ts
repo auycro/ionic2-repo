@@ -16,7 +16,8 @@ import { UserDetailsPage } from '../user-details/user-details';
 })
 export class UsersPage {
 
-  users: User[]
+  users: User[];
+  originalUsers: User[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private githubUsers: GithubUsers) {
     githubUsers.load().subscribe(users => {
@@ -24,6 +25,7 @@ export class UsersPage {
       //  console.log(user.login);
       //});
       this.users = users;
+      this.originalUsers = users;
     })
   }
 
@@ -33,5 +35,21 @@ export class UsersPage {
 
   goToDetails(login: string) {
      this.navCtrl.push(UserDetailsPage, {login});
-   }
+  }
+
+  search(searchEvent){
+    let search_val = searchEvent.target.value;
+    //console.log(search_val);
+    // We will only perform the search if we have 3 or more characters
+    if (search_val.trim() === '' || search_val.trim().length < 3) {
+      // Load cached users
+      this.users = this.originalUsers;
+    } else {
+      // Get the searched users from github
+      this.githubUsers.searchUsers(search_val).subscribe(users => {
+        this.users = users
+      });
+    }
+  }
+
 }
