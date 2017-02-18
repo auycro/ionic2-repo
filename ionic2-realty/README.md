@@ -1,3 +1,6 @@
+# For Reference only
+[link](https://github.com/ccoenraets/ionic2-realty)
+
 ## IonicRealty: Ionic 2 Sample App
 
 Watch the video [here](https://youtu.be/oKHrh_PMHns).
