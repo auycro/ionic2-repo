@@ -1,3 +1,6 @@
+# For reference only
+[link](https://github.com/auycro/ionic2-repo/tree/master/ionic-conference-app)
+
 # Ionic 2 Conference Application
 
 This is purely a demo of Ionic 2 with TypeScript. It is still in development.
