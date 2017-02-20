@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MediaPlugin, File } from 'ionic-native';
+import { MediaPlugin } from 'ionic-native';
 
-import { Alphabet } from '../../models/alphabet';
+//import { Alphabet } from '../../models/alphabet';
 
+import { Consonants } from '../../providers/consonants';
 /*
   Generated class for the Alphabet page.
 
@@ -22,6 +23,7 @@ export class AlphabetPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private consonants: Consonants
   ) {
     this.rows = [
       [
@@ -84,17 +86,16 @@ export class AlphabetPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AlphabetPage');
     console.log(this.data);
+    //this.consonants.loadConsonants();
+    //var test = consonants.consonants;
+    //console.log(test);
   }
 
   showPronounce(alphabet: any){
     console.log(alphabet.pronounce);
-    //let media = new MediaPlugin(alphabet.pronounce);
     try {
-      //File.checkDir(alphabet.pronounce, '').then(_ => console.log('yay')).catch(err => console.log('boooh'));
-      //let path =
       let media = new MediaPlugin(alphabet.pronounce);
       media.play();
-      //media.startRecord();
     }
     catch (e) {
       console.log(e);
