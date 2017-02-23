@@ -60,12 +60,11 @@ export class Consonants {
     let row = [];
 
     for (let entry of array) {
-      if (row.length < row_max){
-        row.push(entry);
-      } else{
+      if (row.length >= row_max){
         data.push(row);
         row = [];
       }
+      row.push(entry);
     }
 
     if (row.length > 0){

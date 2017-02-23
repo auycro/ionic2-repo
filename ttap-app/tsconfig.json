@@ -13,12 +13,7 @@
     "sourceMap": true,
     "target": "es5"
   },
-  "filesGlob": [
-    "**/*.ts"
-  ],
-  "files": [
-    "src/**/*.ts"
-  ],
+
   "include": [
     "src/**/*.ts"
   ],
