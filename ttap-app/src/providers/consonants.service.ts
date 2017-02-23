@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 //import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { Alphabet } from '../models/alphabet';
+import { Alphabet } from '../models/alphabet.model';
 /*
   Generated class for the Consonants provider.
 

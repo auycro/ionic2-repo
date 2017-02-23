@@ -4,7 +4,7 @@ import { MediaPlugin } from 'ionic-native';
 
 //import { Alphabet } from '../../models/alphabet';
 
-import { Consonants } from '../../providers/consonants';
+import { Consonants } from '../../providers/consonants.service';
 /*
   Generated class for the Alphabet page.
 
