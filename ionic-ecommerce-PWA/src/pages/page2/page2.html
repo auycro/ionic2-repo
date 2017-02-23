@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cart</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list @fadeIn no-lines>
+    <button ion-item *ngFor="let item of items" (click)="detail(item.deviceRam, item.deviceCPU, item.devicePrice, item.deviceOS, item.deviceName, item.deviceImage)">
+      <ion-thumbnail item-left>
+      <img [src]="item.deviceImage">
+    </ion-thumbnail>
+    <h2>{{item.deviceName}}</h2>
+    <h3>Price: {{item.devicePrice}}$</h3>
+    </button>
+  </ion-list>
+</ion-content>
+
+<ion-footer @fadeIn>
+  <ion-toolbar *ngIf="!noItems">
+    <ion-buttons>
+      <button color="primary" left ion-button (click)="checkout()">
+        Checkout
+      </button>
+      <button color="danger" right ion-button (click)="clearCart()">
+        Clear
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="noItems">
+    <ion-title text-center>No Items</ion-title>
+  </ion-toolbar>
+</ion-footer>
