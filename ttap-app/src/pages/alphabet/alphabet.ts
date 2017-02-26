@@ -24,6 +24,7 @@ export class AlphabetPage {
     public navParams: NavParams,
     private consonants: Consonants
   ) {
+    console.log(navCtrl,navParams);
     this.rows = this.consonants.loadConsonantsAsGrid(5);
   }
 
@@ -34,7 +35,7 @@ export class AlphabetPage {
   showPronounce(alphabet: any){
     //console.log(alphabet.pronounce);
     try {
-      let media = new MediaPlugin(alphabet.pronounce);
+      var media = new MediaPlugin(alphabet.pronounce);
       media.play();
     }
     catch (e) {

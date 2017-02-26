@@ -41,6 +41,7 @@ export class Consonants {
   }
 
   loadConsonants(): Array<{name: string, type: string, pronounce: string}>{
+/*
     this.consonants = [];
 
     for (let item of this.CONSONANTS) {
@@ -50,7 +51,7 @@ export class Consonants {
         "assets/pronounce/consonants/"+item+".mp3"
       ));
     }
-
+*/
     return this.consonants;
   }
 
