@@ -5,6 +5,7 @@ import { MediaPlugin } from 'ionic-native';
 //import { Alphabet } from '../../models/alphabet';
 
 import { Consonants } from '../../providers/consonants.service';
+import { Numbers } from '../../providers/numbers.service';
 /*
   Generated class for the Alphabet page.
 
@@ -17,15 +18,27 @@ import { Consonants } from '../../providers/consonants.service';
 })
 export class AlphabetPage {
 
+  header: string;
   rows: Array<Array<{name: any, alphabet: any, pronounce: any}>>;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private consonants: Consonants
+    private consonants: Consonants,
+    private numbers: Numbers,
   ) {
-    console.log(navCtrl,navParams);
-    this.rows = this.consonants.loadConsonantsAsGrid(5);
+    console.log(this.navParams.get('page'));
+    var page_type =  this.navParams.get('page');
+    switch(page_type){
+      case 'consonants':
+        this.header = '子音';
+        this.rows = this.consonants.loadConsonantsAsGrid(5);
+        break;
+      case 'numbers':
+        this.header = '数字';
+        this.rows = this.numbers.loadNumbersAsGrid(5);
+        break;
+    }
   }
 
   ionViewDidLoad() {

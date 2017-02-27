@@ -24,12 +24,18 @@ export class HomePage {
     console.log('ionViewDidLoad HomePage');
   }
 
-  openPage(page: Object) {
-    console.log(page);
-    if (page == 0){
-      this.navCtrl.push(AlphabetPage, { data: "home" });
+  openPage(data: Object) {
+    console.log(data);
+    switch(data){
+      case 0:
+        this.navCtrl.push(AlphabetPage, { page: "consonants" });
+        break;
+      case 1:
+        this.navCtrl.push(AlphabetPage, { page: "numbers" });
+        break;
+      default:
+        console.log(data);
     }
-    //this.navCtrl.push(DetailPage, { data: beer });
   }
 
 }
