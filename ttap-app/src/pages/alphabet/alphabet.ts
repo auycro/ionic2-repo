@@ -56,13 +56,10 @@ export class AlphabetPage {
   }
 
   showPronounce(alphabet: any){
-    //console.log(alphabet.pronounce);
-    console.log(alphabet);
+    this.sounds[this.previous_clicked_character].stop();
     try {
-      //var media = new MediaPlugin(alphabet.pronounce);
-      //media.play();
-      this.sounds[this.previous_clicked_character].stop();
       this.sounds[alphabet.name].play();
+      this.previous_clicked_character = alphabet.name;
     }
     catch (e) {
       console.log(e);
