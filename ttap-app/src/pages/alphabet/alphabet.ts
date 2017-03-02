@@ -20,6 +20,8 @@ export class AlphabetPage {
 
   header: string;
   rows: Array<Array<{name: any, alphabet: any, pronounce: any}>>;
+  sounds: { [index: string]: any; } = {};
+  previous_clicked_character: string;
 
   constructor(
     public navCtrl: NavController,
@@ -29,15 +31,23 @@ export class AlphabetPage {
   ) {
     console.log(this.navParams.get('page'));
     var page_type =  this.navParams.get('page');
+    var item_list = [];
     switch(page_type){
       case 'consonants':
         this.header = '子音';
-        this.rows = this.consonants.loadConsonantsAsGrid(5);
+        this.rows = this.consonants.loadConsonantsAsGrid(4);
+        item_list = this.consonants.loadConsonants();
         break;
       case 'numbers':
         this.header = '数字';
-        this.rows = this.numbers.loadNumbersAsGrid(5);
+        this.rows = this.numbers.loadNumbersAsGrid(4);
+        item_list = this.numbers.loadNumbers();
         break;
+    }
+
+    for (let item of item_list) {
+      this.sounds[item.name] = new MediaPlugin(item.pronounce);
+      this.previous_clicked_character = item.name;
     }
   }
 
@@ -47,9 +57,12 @@ export class AlphabetPage {
 
   showPronounce(alphabet: any){
     //console.log(alphabet.pronounce);
+    console.log(alphabet);
     try {
-      var media = new MediaPlugin(alphabet.pronounce);
-      media.play();
+      //var media = new MediaPlugin(alphabet.pronounce);
+      //media.play();
+      this.sounds[this.previous_clicked_character].stop();
+      this.sounds[alphabet.name].play();
     }
     catch (e) {
       console.log(e);

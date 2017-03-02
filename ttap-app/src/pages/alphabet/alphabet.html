@@ -16,7 +16,7 @@
 <ion-content padding>
   <ion-grid>
     <ion-row *ngFor="let row of rows">
-      <ion-col width-20 center *ngFor="let data of row">
+      <ion-col width-25 center *ngFor="let data of row">
           <button ion-button round (click)="showPronounce(data)">
             {{data.name}}
           </button>

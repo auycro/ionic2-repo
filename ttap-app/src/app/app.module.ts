@@ -17,7 +17,9 @@ import { Numbers } from '../providers/numbers.service';
     AlphabetPage,
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '戻る',
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

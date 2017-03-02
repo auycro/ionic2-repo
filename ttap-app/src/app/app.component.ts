@@ -4,7 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 //import { Page1 } from '../pages/page1/page1';
 //import { Page2 } from '../pages/page2/page2';
 import { HomePage } from '../pages/home/home';
-import { AlphabetPage } from '../pages/alphabet/alphabet';
+//import { AlphabetPage } from '../pages/alphabet/alphabet';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class MyApp {
   //rootPage: any = Page1;
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, icon:string, component: any}>;
 
   constructor(public platform: Platform) {
     this.initializeApp();
@@ -25,8 +25,8 @@ export class MyApp {
     this.pages = [
 //      { title: 'Page One', component: Page1 },
 //      { title: 'Page Two', component: Page2 },
-      { title: 'Home', component: HomePage },
-      { title: 'Thai Alphabet', component: AlphabetPage }
+      { title: 'ホーム', icon: 'home', component: HomePage },
+//      { title: 'Thai Alphabet', component: AlphabetPage }
     ];
 
   }
