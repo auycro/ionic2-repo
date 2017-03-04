@@ -4,8 +4,9 @@ import { MediaPlugin } from 'ionic-native';
 
 //import { Alphabet } from '../../models/alphabet';
 
-import { Consonants } from '../../providers/consonants.service';
-import { Numbers } from '../../providers/numbers.service';
+import { ConsonantsService } from '../../../providers/consonants-service';
+import { NumbersService } from '../../../providers/numbers-service';
+import { VowelsService } from '../../../providers/vowels-service';
 /*
   Generated class for the Alphabet page.
 
@@ -13,10 +14,10 @@ import { Numbers } from '../../providers/numbers.service';
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-alphabet',
-  templateUrl: 'alphabet.html'
+  selector: 'page-alphabet-main',
+  templateUrl: 'alphabet-main.html'
 })
-export class AlphabetPage {
+export class AlphabetMainPage {
 
   header: string;
   page_type: string;
@@ -27,22 +28,28 @@ export class AlphabetPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private consonants: Consonants,
-    private numbers: Numbers,
+    private consonants: ConsonantsService,
+    private numbers: NumbersService,
+    private vowels: VowelsService
   ) {
-    console.log(this.navParams.get('page'));
+    //console.log(this.navParams.get('page'));
     this.page_type =  this.navParams.get('page');
     var item_list = [];
     switch(this.page_type){
       case 'consonants':
         this.header = '子音';
-        this.rows = this.consonants.loadConsonantsAsGrid(4);
-        item_list = this.consonants.loadConsonants();
+        this.rows = this.consonants.loadAlphabetsAsGrid(4);
+        item_list = this.consonants.loadAlphabets();
+        break;
+    　case 'vowels':
+        this.header = '母字';
+        this.rows = this.vowels.loadAlphabetsAsGrid(4);
+        item_list = this.vowels.loadAlphabets();
         break;
       case 'numbers':
         this.header = '数字';
-        this.rows = this.numbers.loadNumbersAsGrid(4);
-        item_list = this.numbers.loadNumbers();
+        this.rows = this.numbers.loadAlphabetsAsGrid(4);
+        item_list = this.numbers.loadAlphabets();
         break;
     }
 

@@ -3,7 +3,9 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 //import { Page1 } from '../pages/page1/page1';
 //import { Page2 } from '../pages/page2/page2';
-import { HomePage } from '../pages/home/home';
+import { WelcomePage } from '../pages/welcome/welcome';
+import { AboutPage } from '../pages/about/about';
+import { AlphabetHomePage } from '../pages/alphabet/alphabet-home/alphabet-home';
 //import { AlphabetPage } from '../pages/alphabet/alphabet';
 
 
@@ -14,7 +16,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   //rootPage: any = Page1;
-  rootPage: any = HomePage;
+  rootPage: any = AlphabetHomePage;
 
   pages: Array<{title: string, icon:string, component: any}>;
 
@@ -25,8 +27,9 @@ export class MyApp {
     this.pages = [
 //      { title: 'Page One', component: Page1 },
 //      { title: 'Page Two', component: Page2 },
-      { title: 'ホーム', icon: 'home', component: HomePage },
-//      { title: 'Thai Alphabet', component: AlphabetPage }
+      { title: 'タイ文字', icon: 'home', component: AlphabetHomePage },
+      { title: 'ようこそ', icon: 'home', component: WelcomePage },
+      { title: 'アプリについて', icon: 'home', component: AboutPage },
     ];
 
   }

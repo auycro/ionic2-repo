@@ -10,11 +10,12 @@ import { Alphabet } from '../models/alphabet.model';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class Numbers {
+export class NumbersService {
 
   NUMBERS: string[] = [
-    "1","2","3","4","5",
-    "6","7","8","9","0"
+    "0","1","2","3","4",
+    "5","6","7","8","9",
+    "10"
   ];
 
   numbers: Alphabet[];
@@ -32,11 +33,11 @@ export class Numbers {
     }
   }
 
-  loadNumbers(): Array<{name: string, type: string, pronounce: string}>{
+  loadAlphabets(): Array<{name: string, type: string, pronounce: string}>{
     return this.numbers;
   }
 
-  loadNumbersAsGrid(row_max: number): Array<Array<{name: string, alphabet: string, pronounce: string}>>{
+  loadAlphabetsAsGrid(row_max: number): Array<Array<{name: string, alphabet: string, pronounce: string}>>{
     let array = this.numbers;
     let data = [];
     let row = [];

@@ -11,7 +11,7 @@ import { Alphabet } from '../models/alphabet.model';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class Consonants {
+export class ConsonantsService {
 
   CONSONANTS: string[] = [
     "ก","ข","ฃ","ค","ฅ",
@@ -40,7 +40,7 @@ export class Consonants {
     }
   }
 
-  loadConsonants(): Array<{name: string, type: string, pronounce: string}>{
+  loadAlphabets(): Array<{name: string, type: string, pronounce: string}>{
 /*
     this.consonants = [];
 
@@ -55,7 +55,7 @@ export class Consonants {
     return this.consonants;
   }
 
-  loadConsonantsAsGrid(row_max: number): Array<Array<{name: string, alphabet: string, pronounce: string}>>{
+  loadAlphabetsAsGrid(row_max: number): Array<Array<{name: string, alphabet: string, pronounce: string}>>{
     let array = this.consonants;
     let data = [];
     let row = [];

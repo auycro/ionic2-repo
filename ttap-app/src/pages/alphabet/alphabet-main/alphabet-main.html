@@ -14,10 +14,25 @@
 </ion-header>
 
 <ion-content has-bouncing="false" padding>
-  <label class="item item-input" *ngIf="page_type === 'numbers'">
-    <span class="input-label">数字：</span>
-    <input type="number" placeholder="input field">
-  </label>
+  <!--Numbers Input-->
+  <!--TODO: add input for number
+  <ion-item *ngIf="page_type === 'numbers'">
+    <ion-row>
+      <ion-col width-80>
+        <label class="item item-input">
+          <span class="input-label">数字：</span>
+          <input type="number" placeholder="input field" />
+        </label>
+      </ion-col>
+      <ion-col width-20>
+        <button ion-button round small icon-only>
+          <ion-icon name="volume-up"></ion-icon>
+        </button>
+      </ion-col>
+   </ion-row>
+ </ion-item>
+ -->
+
   <ion-grid>
     <ion-row *ngFor="let row of rows">
       <ion-col width-25 center *ngFor="let data of row">
