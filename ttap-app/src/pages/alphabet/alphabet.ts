@@ -19,6 +19,7 @@ import { Numbers } from '../../providers/numbers.service';
 export class AlphabetPage {
 
   header: string;
+  page_type: string;
   rows: Array<Array<{name: any, alphabet: any, pronounce: any}>>;
   sounds: { [index: string]: any; } = {};
   previous_clicked_character: string;
@@ -30,9 +31,9 @@ export class AlphabetPage {
     private numbers: Numbers,
   ) {
     console.log(this.navParams.get('page'));
-    var page_type =  this.navParams.get('page');
+    this.page_type =  this.navParams.get('page');
     var item_list = [];
-    switch(page_type){
+    switch(this.page_type){
       case 'consonants':
         this.header = '子音';
         this.rows = this.consonants.loadConsonantsAsGrid(4);
@@ -56,8 +57,8 @@ export class AlphabetPage {
   }
 
   showPronounce(alphabet: any){
-    this.sounds[this.previous_clicked_character].stop();
     try {
+      this.sounds[this.previous_clicked_character].stop();
       this.sounds[alphabet.name].play();
       this.previous_clicked_character = alphabet.name;
     }

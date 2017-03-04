@@ -13,7 +13,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content has-bouncing="false" padding>
+  <label class="item item-input" *ngIf="page_type === 'numbers'">
+    <span class="input-label">数字：</span>
+    <input type="number" placeholder="input field">
+  </label>
   <ion-grid>
     <ion-row *ngFor="let row of rows">
       <ion-col width-25 center *ngFor="let data of row">
