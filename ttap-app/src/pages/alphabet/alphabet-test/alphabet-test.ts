@@ -27,7 +27,6 @@ export class AlphabetTestPage {
   point: number;
 
   @ViewChild(Slides) slider: Slides;
-  //slideOptions: any;
 
   constructor(
     public navCtrl: NavController,
@@ -37,14 +36,6 @@ export class AlphabetTestPage {
   ) {
     this.level =  this.navParams.get('page');
     this.point = 0;
-
-    //InitSlides
-    //this.slideOptions = {
-    //  onlyExternal: false,
-    //   onInit: (slides: any) =>
-    //      this.slider = slides
-    // }
-
     this.quizzes_list = this.quizzes.loadConsonantQuiz();
     console.log(this.quizzes_list);
   }

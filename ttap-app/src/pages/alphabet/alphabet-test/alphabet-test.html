@@ -21,9 +21,10 @@
   </ion-list>
 
   <ion-slides (ionSlideWillChange)="onUpdatePoint($event)" pager="false" [options]="slideOptions">
-    <ion-slide *ngFor="let quiz of quizzes_list" class="slide-custom">  
+    <ion-slide *ngFor="let quiz of quizzes_list" class="slide-custom">
       <button ion-button block (click)="playSound()" color="danger">
-        {{quiz.question.name}}
+        <!--{{quiz.question.name}}-->
+        <ion-icon name="md-volume-up"></ion-icon>
       </button>
       <ion-list *ngFor="let answer of quiz.choices" no-lines>
         <button ion-button block (click)="onAnswer(answer, quiz.right_choice)" color="light-pink">

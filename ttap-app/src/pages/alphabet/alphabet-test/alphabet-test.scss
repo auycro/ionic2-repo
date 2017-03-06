@@ -6,12 +6,14 @@ page-alphabet-test {
   .slide-custom {
     margin: 0 !important;
     padding: 0 !important;
-    heigth: 100%;
+    //heigth: 100%;
+    display: block;
+    
+    ion-list{
+      margin: 0 !important;
+      padding: 0 !important;
+    }
   }
-
-  div.slide-zoom{
-    heigth: 100%;
-  };
 
   .no-padding {
     padding: 0 !important;
