@@ -27,7 +27,7 @@ export class AlphabetHomePage {
   }
 
   openPage(data: Object) {
-    console.log(data);
+    //console.log(data);
     switch(data){
       case 0:
         this.navCtrl.push(AlphabetMainPage, { page: "consonants" });

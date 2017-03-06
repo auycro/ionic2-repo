@@ -13,6 +13,7 @@ import { AlphabetTestPage } from '../pages/alphabet/alphabet-test/alphabet-test'
 import { ConsonantsService } from '../providers/consonants-service';
 import { NumbersService } from '../providers/numbers-service';
 import { VowelsService } from '../providers/vowels-service';
+import { QuizzesService } from '../providers/quizzes-service';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { VowelsService } from '../providers/vowels-service';
     ConsonantsService,
     NumbersService,
     VowelsService,
+    QuizzesService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

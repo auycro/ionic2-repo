@@ -5,14 +5,27 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
+  <ion-toolbar color="light-pink" hideBackButton="true">
+    <button ion-button color="light-pink" (click)="onEndGame()" icon-only>
+      <ion-icon name="md-exit"></ion-icon>
+    </button>
     <ion-title>テスト {{level}}</ion-title>
-  </ion-navbar>
-
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
+  <ion-list no-lines>
+    <ion-item class="align-right">
+      <b>Point</b> {{point}}
+    </ion-item>
+  </ion-list>
 
+  <ion-slides (ionSlideWillChange)="onUpdatePoint($event)" pager="false" [options]="slideOptions">  
+    <ion-slide>
+      1
+    </ion-slide>
+    <ion-slide>
+      2
+    </ion-slide>
+  </ion-slides>
 </ion-content>
