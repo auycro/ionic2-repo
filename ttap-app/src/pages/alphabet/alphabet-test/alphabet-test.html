@@ -20,12 +20,19 @@
     </ion-item>
   </ion-list>
 
-  <ion-slides (ionSlideWillChange)="onUpdatePoint($event)" pager="false" [options]="slideOptions">  
-    <ion-slide>
-      1
+  <ion-slides (ionSlideWillChange)="onUpdatePoint($event)" pager="false" [options]="slideOptions">
+    <ion-slide *ngFor="let quiz of quizzes_list" class="slide-custom">  
+      <button ion-button block (click)="playSound()" color="danger">
+        {{quiz.question.name}}
+      </button>
+      <ion-list *ngFor="let answer of quiz.choices" no-lines>
+        <button ion-button block (click)="onAnswer(answer, quiz.right_choice)" color="light-pink">
+          {{answer.name}}
+        </button>
+      </ion-list>
     </ion-slide>
-    <ion-slide>
+    <!--ion-slide>
       2
-    </ion-slide>
+    </ion-slide-->
   </ion-slides>
 </ion-content>

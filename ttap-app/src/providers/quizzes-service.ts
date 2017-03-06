@@ -36,7 +36,7 @@ export class QuizzesService {
                 right_choice: alphabets[index] };
       this.quiz.push(q);
     }
-    console.log(this.quiz);
+    //console.log(this.quiz);
     return this.quiz;
   }
 

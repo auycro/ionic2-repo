@@ -2,9 +2,13 @@ import { Component, ViewChild} from '@angular/core';
 import { NavController, NavParams, Slides} from 'ionic-angular';
 import { MediaPlugin } from 'ionic-native';
 
-import { ConsonantsService } from '../../../providers/consonants-service';
+//import { AlphabetHomePage } from '../alphabet-home/alphabet-home';
 
+import { ConsonantsService } from '../../../providers/consonants-service';
 import { QuizzesService } from '../../../providers/quizzes-service';
+
+import { Alphabet } from '../../../models/alphabet.model';
+import { Quiz } from '../../../models/quiz.model';
 /*
   Generated class for the AlphabetTest page.
 
@@ -18,12 +22,12 @@ import { QuizzesService } from '../../../providers/quizzes-service';
 export class AlphabetTestPage {
 
   level: string;
-  quiz: any;
+  quizzes_list: Quiz[];
   answer: any;
   point: number;
 
   @ViewChild(Slides) slider: Slides;
-  slideOptions: any;
+  //slideOptions: any;
 
   constructor(
     public navCtrl: NavController,
@@ -34,14 +38,15 @@ export class AlphabetTestPage {
     this.level =  this.navParams.get('page');
     this.point = 0;
 
-    //LockSwipes
-    this.slideOptions = {
-      onlyExternal: false,
-       onInit: (slides: any) =>
-          this.slider = slides
-     }
+    //InitSlides
+    //this.slideOptions = {
+    //  onlyExternal: false,
+    //   onInit: (slides: any) =>
+    //      this.slider = slides
+    // }
 
-    var quizzes_list = this.quizzes.loadConsonantQuiz();
+    this.quizzes_list = this.quizzes.loadConsonantQuiz();
+    console.log(this.quizzes_list);
   }
 
   ionViewDidLoad() {
@@ -49,11 +54,25 @@ export class AlphabetTestPage {
     this.slider.lockSwipes(true);
   }
 
+  playSound(){
+    console.log('slider:',this.slider.getActiveIndex());
+  }
+
   onUpdatePoint(slider: Slides) {
     //this.showSkip = !slider.isEnd();
   }
 
+  onAnswer(choice: Alphabet, answer: Alphabet){
+    if (!this.slider.isEnd()){
+      console.log('test:',choice,answer);
+      this.slider.lockSwipes(false);
+      this.slider.slideNext();
+      this.slider.lockSwipes(true);
+    }
+  }
+
   onEndGame(){
-    this.navCtrl.popToRoot();
+    //this.navCtrl.popToRoot();
+    this.navCtrl.pop();
   }
 }

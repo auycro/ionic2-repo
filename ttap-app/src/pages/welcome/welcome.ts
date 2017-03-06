@@ -33,6 +33,7 @@ export class WelcomePage {
 
   startApp(){
     this.navCtrl.push(AlphabetHomePage);
+    //this.navCtrl.popToRoot();
 /*
     this.navCtrl.push(TabsPage).then(() => {
       this.storage.set('hasSeenTutorial', 'true');

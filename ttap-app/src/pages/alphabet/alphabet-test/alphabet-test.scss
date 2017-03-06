@@ -2,4 +2,18 @@ page-alphabet-test {
   .align-right{
     text-align: right;
   }
+
+  .slide-custom {
+    margin: 0 !important;
+    padding: 0 !important;
+    heigth: 100%;
+  }
+
+  div.slide-zoom{
+    heigth: 100%;
+  };
+
+  .no-padding {
+    padding: 0 !important;
+  }
 }
