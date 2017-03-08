@@ -32,7 +32,7 @@ export class QuizzesService {
     for(var i=0;i<10;i++){
       var index = Math.floor(Math.random() * (alphabets.length-1)) + 0;
       var q = { question: alphabets[index],
-                choices: this.randomChoice(alphabets),
+                choices: this.randomChoice(alphabets, alphabets[index]),
                 right_choice: alphabets[index] };
       this.quiz.push(q);
     }
@@ -40,13 +40,37 @@ export class QuizzesService {
     return this.quiz;
   }
 
-  randomChoice(list:Alphabet[]): Alphabet[]{
+  randomChoice(list:Alphabet[], answer:Alphabet): Alphabet[]{
     var choices = [];
-    for(var i=0;i<3;i++){
+
+    choices.push(answer);
+
+    while (choices.length < 4){
       var index = Math.floor(Math.random() * (list.length-1)) + 0;
-      choices.push(list[index]);
+      if (list[index].name != answer.name){
+        choices.push(list[index]);
+      }
     }
-    return choices;
+    
+    return this.shuffle(choices);
+  }
+
+  shuffle(array:Alphabet[]): Alphabet[] {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
 
 }

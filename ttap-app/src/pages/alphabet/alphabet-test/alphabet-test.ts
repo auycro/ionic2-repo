@@ -41,7 +41,6 @@ export class AlphabetTestPage {
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad AlphabetTestPage');
     this.slider.lockSwipes(true);
   }
 
@@ -60,10 +59,19 @@ export class AlphabetTestPage {
       this.slider.slideNext();
       this.slider.lockSwipes(true);
     }
+
+    this.checkAnswer(choice,answer);
   }
 
   onEndGame(){
     //this.navCtrl.popToRoot();
     this.navCtrl.pop();
+  }
+
+  checkAnswer(select: Alphabet, answer: Alphabet){
+    if (select.name == answer.name){
+      this.point++;
+    }
+    console.log(this.point);
   }
 }
