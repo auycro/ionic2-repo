@@ -56,6 +56,7 @@ export class AlphabetTestPage {
 
   ionViewDidLoad() {
     this.slider.lockSwipes(true);
+    this.playSound(this.quizzes_list[0].question);
   }
 
   playSound(alphabet: Alphabet){
@@ -75,13 +76,15 @@ export class AlphabetTestPage {
   }
 
   onAnswer(choice: Alphabet, answer: Alphabet){
+    //console.log('test:',this.slider.getActiveIndex(),choice.name,answer.name);
     this.checkAnswer(choice,answer);
 
     if (!this.slider.isEnd()){
-      console.log('test:',choice,answer);
       this.slider.lockSwipes(false);
       this.slider.slideNext();
       this.slider.lockSwipes(true);
+      var nextAlphabet = this.quizzes_list[this.slider.getActiveIndex()].question;
+      this.playSound(nextAlphabet);
     } else {
       this.pointConfirm(this.point);
     }
@@ -96,7 +99,7 @@ export class AlphabetTestPage {
     if (select.name == answer.name){
       this.point++;
     }
-    console.log(this.point);
+    //console.log(this.point);
   }
 
   pointConfirm(point: number){
@@ -108,7 +111,6 @@ export class AlphabetTestPage {
           text: '終了',
           //role: 'cancel',
           handler: data => {
-            console.log('Cancel clicked');
             this.onEndGame();
           }
         }

@@ -17,24 +17,28 @@ export class QuizzesService {
 
   quiz: Quiz[];
   level: number;
+  check_quiz : { [index:string]: string; } = {};
 
   constructor(
     public http: Http,
     private consonants: ConsonantsService
   ) {
-    this.quiz = [];
+    //this.quiz = [];
   }
 
   loadConsonantQuiz(): Array<{question: Alphabet, choices: Alphabet[], right_choice: Alphabet}>{
-
+    this.quiz = [];
     var alphabets = this.consonants.loadAlphabets();
 
     for(var i=0;i<10;i++){
       var index = Math.floor(Math.random() * (alphabets.length-1)) + 0;
-      var q = { question: alphabets[index],
-                choices: this.randomChoice(alphabets, alphabets[index]),
-                right_choice: alphabets[index] };
-      this.quiz.push(q);
+
+      if (this.check_quiz[alphabets[index].name] == null){
+        var q = { question: alphabets[index],
+                  choices: this.randomChoice(alphabets, alphabets[index]),
+                  right_choice: alphabets[index] };
+        this.quiz.push(q);
+      }
     }
     //console.log(this.quiz);
     return this.quiz;
@@ -51,7 +55,7 @@ export class QuizzesService {
         choices.push(list[index]);
       }
     }
-    
+
     return this.shuffle(choices);
   }
 
