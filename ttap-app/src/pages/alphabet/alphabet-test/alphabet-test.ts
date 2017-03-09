@@ -1,5 +1,11 @@
 import { Component, ViewChild} from '@angular/core';
-import { NavController, NavParams, Slides} from 'ionic-angular';
+import {
+  NavController,
+  NavParams,
+  Slides,
+  AlertController
+} from 'ionic-angular';
+
 import { MediaPlugin } from 'ionic-native';
 
 //import { AlphabetHomePage } from '../alphabet-home/alphabet-home';
@@ -25,6 +31,8 @@ export class AlphabetTestPage {
   quizzes_list: Quiz[];
   answer: any;
   point: number;
+  sounds: { [index: string]: any; } = {};
+  previous_clicked_character: string;
 
   @ViewChild(Slides) slider: Slides;
 
@@ -33,19 +41,33 @@ export class AlphabetTestPage {
     public navParams: NavParams,
     private consonants: ConsonantsService,
     private quizzes: QuizzesService,
+    private alertCtrl: AlertController
   ) {
     this.level =  this.navParams.get('page');
     this.point = 0;
     this.quizzes_list = this.quizzes.loadConsonantQuiz();
-    console.log(this.quizzes_list);
+    //console.log(this.quizzes_list);
+
+    for (let quiz of this.quizzes_list) {
+      this.sounds[quiz.question.name] = new MediaPlugin(quiz.question.pronounce);
+      this.previous_clicked_character = quiz.question.name;
+    }
   }
 
   ionViewDidLoad() {
     this.slider.lockSwipes(true);
   }
 
-  playSound(){
-    console.log('slider:',this.slider.getActiveIndex());
+  playSound(alphabet: Alphabet){
+    //console.log('slider:',this.slider.getActiveIndex());
+    try {
+      this.sounds[this.previous_clicked_character].stop();
+      this.sounds[alphabet.name].play();
+      this.previous_clicked_character = alphabet.name;
+    }
+    catch (e) {
+      console.log(e);
+    }
   }
 
   onUpdatePoint(slider: Slides) {
@@ -53,14 +75,16 @@ export class AlphabetTestPage {
   }
 
   onAnswer(choice: Alphabet, answer: Alphabet){
+    this.checkAnswer(choice,answer);
+
     if (!this.slider.isEnd()){
       console.log('test:',choice,answer);
       this.slider.lockSwipes(false);
       this.slider.slideNext();
       this.slider.lockSwipes(true);
+    } else {
+      this.pointConfirm(this.point);
     }
-
-    this.checkAnswer(choice,answer);
   }
 
   onEndGame(){
@@ -73,5 +97,23 @@ export class AlphabetTestPage {
       this.point++;
     }
     console.log(this.point);
+  }
+
+  pointConfirm(point: number){
+    let alert = this.alertCtrl.create({
+      title: 'ゲームオーバー',　//'テスト終了',
+      message: 'ポイント：'+point.toString(),
+      buttons: [
+        {
+          text: '終了',
+          //role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+            this.onEndGame();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
